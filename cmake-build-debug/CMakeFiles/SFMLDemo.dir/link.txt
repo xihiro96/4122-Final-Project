@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -g  -rdynamic CMakeFiles/SFMLDemo.dir/main.cpp.o CMakeFiles/SFMLDemo.dir/Scenes/Scene1.cpp.o  -o SFMLDemo -lsfml-system -lsfml-window -lsfml-graphics -lsfml-network -lsfml-audio 

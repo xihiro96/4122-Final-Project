@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mhendrix/CLionProjects/SFMLDemo/Scenes/Scene1.cpp
+Scene1.h
+/home/mhendrix/CLionProjects/SFMLDemo/Scenes/Scene1.h
+
+/home/mhendrix/CLionProjects/SFMLDemo/Scenes/Scene1.h
+SFML/Graphics.hpp
+-
+iostream
+-
+string
+-
+
+/home/mhendrix/CLionProjects/SFMLDemo/main.cpp
+Scenes/Scene1.h
+/home/mhendrix/CLionProjects/SFMLDemo/Scenes/Scene1.h
+
