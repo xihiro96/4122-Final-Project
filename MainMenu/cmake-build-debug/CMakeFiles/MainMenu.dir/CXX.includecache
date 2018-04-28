@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kevjghost/Desktop/MainMenu/Menu.cpp
+Menu.h
+/Users/kevjghost/Desktop/MainMenu/Menu.h
+
+/Users/kevjghost/Desktop/MainMenu/Menu.h
+SFML/Graphics.hpp
+-
+iostream
+-
+
+/Users/kevjghost/Desktop/MainMenu/main.cpp
+SFML/Graphics.hpp
+-
+iostream
+-
+Menu.h
+/Users/kevjghost/Desktop/MainMenu/Menu.h
+
