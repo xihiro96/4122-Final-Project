@@ -3,7 +3,7 @@ project(SFMLDemo)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp Scenes/Scene1.cpp Scenes/Scene1.h)
+set(SOURCE_FILES main.cpp Scenes/Scene1.cpp Scenes/Scene1.h Animation/AnimatedSprite.cpp Animation/AnimatedSprite.h Animation/TestAnimation.cpp Animation/TestAnimation.h Animation/Coordinate.cpp Animation/Coordinate.h Animation/ActionEnum.h Animation/Animations.cpp Animation/Animations.h)
 add_executable(SFMLDemo ${SOURCE_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
@@ -17,3 +17,8 @@ file(COPY "Images/Cutscenes/Fonts/made-in-china.regular.ttf" DESTINATION "${CMAK
 file(COPY "Images/Cutscenes/Background/forest.jpeg" DESTINATION "${CMAKE_BINARY_DIR}")
 file(COPY "Images/Cutscenes/Sprites/samurai.png" DESTINATION "${CMAKE_BINARY_DIR}")
 file(COPY "Images/Cutscenes/Sprites/brother.png" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "Images/Sprites/amy_sprite.png" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "Images/Sprites/bary_sprite.png" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "Images/Sprites/boss_sprite.png" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "Images/Sprites/minion_sprite.png" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "Images/Sprites/silas_sprite.png" DESTINATION "${CMAKE_BINARY_DIR}")

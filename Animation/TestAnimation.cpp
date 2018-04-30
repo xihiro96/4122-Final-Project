@@ -3,3 +3,16 @@
 //
 
 #include "TestAnimation.h"
+
+void TestAnimation::runAnimationTest(sf::RenderWindow * window) {
+    AnimatedSprite silas;
+    if (!silas.load("silas_sprite.png")) {
+        std::cout << "Couldn't load spritesheet" << std::endl;
+        return;
+    }
+
+    silas.setScale(1);
+    silas.setPosition(50,50);
+
+
+}
