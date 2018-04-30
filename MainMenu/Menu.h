@@ -21,10 +21,11 @@ public:
     void MoveUp();
     void MoveDown();
     int GetPressedItem(){return selectedItemIndex;}
+    void runMenu(Menu input_menu, sf::RenderWindow * window, sf::Event * event);
 
 private:
     int selectedItemIndex;
-    sf::Font font;
+    sf::Font menu_font;
     sf::Texture title_image;
     sf::Sprite sprite_title;
     sf::Text menu_text[MAX_ITEMS];
