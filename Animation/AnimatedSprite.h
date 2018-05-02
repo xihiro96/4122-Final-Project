@@ -19,9 +19,11 @@ public:
 
     bool load(const std::string& filename);
 
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow* window);
 
     void animate();
+
+    void move();
 
     void setAction(Actions::ActionEnum action);
 
@@ -29,7 +31,15 @@ public:
 
     void setScale(float scale);
 
-    void move(sf::Vector2f);
+//    void setMovement(Actions::DirectionEnum direction);
+
+    void setMovement(Actions::DirectionEnum direction, bool move);
+
+    Actions::ActionEnum getAction();
+
+    bool getMovement(Actions::DirectionEnum direction);
+
+//    Actions::DirectionEnum getDirection();
 
     sf::Vector2f getPosition() const;
 
@@ -45,7 +55,10 @@ private:
     Actions::ActionEnum myAction = Actions::ActionEnum::InanimateDown;
     std::vector<Coordinate*>::iterator actionIterator;
     sf::Clock animateClock;
+    sf::Clock moveClock;
     Animations spritesheetInfo;
+    float mySpeed = 120.0f;
+    bool moveUp, moveRight, moveLeft, moveDown;
 };
 
 #endif //ANIMATEDSPRITE_H

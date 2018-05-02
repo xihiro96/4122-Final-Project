@@ -4,9 +4,17 @@
 
 /*
  * Test Instructions:
- *      1) add `#include Animation/TestAnimations.cpp` to main.cpp
- *      2) add `runAnimationTest()` to main.cpp before runScene1()
- *      3) comment out runScene1()
+ * replace code in main.cpp with the following:
+
+#include "Animation/TestAnimation.h"
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Lonely Blade IV", sf::Style::Default); //create 1080p window with close button
+    window.setVerticalSyncEnabled(true); //game will update according to graphics card settings
+    TestAnimation::runAnimationTest(&window);
+    return 0;
+}
+ 
  *
  */
 

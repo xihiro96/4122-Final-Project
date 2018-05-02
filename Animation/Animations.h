@@ -14,21 +14,6 @@ using namespace Actions;
 class Animations {
 public:
 
-//    std::vector<Coordinate*> inAnimateUpCoordinates;
-//    std::vector<Coordinate*> inAnimateRightCoordinates;
-//    std::vector<Coordinate*> inAnimateDownCoordinates;
-//    std::vector<Coordinate*> inAnimateLeftCoordinates;
-//    std::vector<Coordinate*> walkUpCoordinates;
-//    std::vector<Coordinate*> walkRightCoordinates;
-//    std::vector<Coordinate*> walkDownCoordinates;
-//    std::vector<Coordinate*> walkLeftCoordinates;
-//    std::vector<Coordinate*> inanimateFightRightCoordinates;
-//    std::vector<Coordinate*> inanimateFightLeftCoordinates;
-//    std::vector<Coordinate*> slashRightCoordinates;
-//    std::vector<Coordinate*> slashLeftCoordinates;
-//    std::vector<Coordinate*> castSpellRightCoordinates;
-//    std::vector<Coordinate*> castSpellLeftCoordinates;
-    //======== Map from Action to Vector of Coordinate* ========//
     struct ActionEnumClassHash
     {
         template <typename T>
@@ -44,7 +29,6 @@ public:
     template <typename Key, typename Val>
     using ActionCoordinateUnorderedMap = std::unordered_map<Key, Val, HashType<Key>>;
 
-//    ActionCoordinateUnorderedMap<Actions::ActionEnum, std::vector<Coordinate*>> actionsToCoordinates;
         std::vector<Coordinate*> inAnimateUpCoordinates { new Coordinate(519, 11, 579, 53) };
         std::vector<Coordinate*> inAnimateRightCoordinates { new Coordinate(711, 11, 773,53) };
         std::vector<Coordinate*> inAnimateDownCoordinates { new Coordinate(648, 11, 710, 53) };
@@ -63,14 +47,14 @@ public:
 
         std::vector<Coordinate*> walkRightCoordinates {
                 new Coordinate(711, 11, 773,53),
-                new Coordinate(711, 75, 711, 117),
-                new Coordinate(711, 139, 711, 181),
-                new Coordinate(711, 203, 711, 245),
-                new Coordinate(711, 267, 711, 309),
-                new Coordinate(711, 331, 711, 373),
-                new Coordinate(711, 395, 711, 437),
-                new Coordinate(711, 459, 711, 501),
-                new Coordinate(711, 523, 711, 565)
+                new Coordinate(711, 75, 773, 117),
+                new Coordinate(711, 139, 773, 181),
+                new Coordinate(711, 203, 773, 245),
+                new Coordinate(711, 267, 773, 309),
+                new Coordinate(711, 331, 773, 373),
+                new Coordinate(711, 395, 773, 437),
+                new Coordinate(711, 459, 773, 501),
+                new Coordinate(711, 523, 773, 565)
         };
 
         std::vector<Coordinate*> walkDownCoordinates {
@@ -97,7 +81,7 @@ public:
                 new Coordinate(583, 523, 645, 565)
         };
 
-        //======== TODO: ADJUST COORDINATES FOR FIGHT SCENE ACTIONS ========//
+        ////======== TODO: ADJUST COORDINATES FOR FIGHT SCENE ACTIONS ========////
 
         std::vector<Coordinate*> inanimateFightRightCoordinates { new Coordinate() };
 
@@ -159,7 +143,7 @@ public:
                 {ActionEnum::CastSpellRight, castSpellRightCoordinates},
                 {ActionEnum::CastSpellLeft, castSpellLeftCoordinates}
         };
-        };
+};
 
 
 #endif //SFMLDEMO_ACTIONS_H

@@ -26,7 +26,7 @@ bool AnimatedSprite::load(const std::string& filename) {
 
 void AnimatedSprite::animate() {
     if (isValid) {
-        if (myAction == Actions::ActionEnum::InanimateLeft ||
+        if (myAction == Actions::ActionEnum::InanimateUp ||
             myAction == Actions::ActionEnum::InanimateRight ||
             myAction == Actions::ActionEnum::InanimateDown ||
             myAction == Actions::ActionEnum::InanimateLeft ||
@@ -35,9 +35,25 @@ void AnimatedSprite::animate() {
             return;
         }
 
-        if (animateClock.getElapsedTime().asMilliseconds() > 200) {
+        if (animateClock.getElapsedTime().asMilliseconds() > 100) {
             if (actionIterator == spritesheetInfo.actionsToCoordinates[myAction].end()) {
-                actionIterator = spritesheetInfo.actionsToCoordinates[myAction].begin();
+                switch (myAction) {
+                    case Actions::ActionEnum::SlashLeft:
+                        setAction(Actions::ActionEnum::InanimateFightLeft);
+                        return;
+                    case Actions::ActionEnum::SlashRight:
+                        setAction(Actions::ActionEnum::InanimateFightRight);
+                        return;
+                    case Actions::ActionEnum::CastSpellLeft:
+                        setAction(Actions::ActionEnum::InanimateFightLeft);
+                        return;
+                    case Actions::ActionEnum::CastSpellRight:
+                        setAction(Actions::ActionEnum::InanimateFightRight);
+                        return;
+                    default:
+                        actionIterator = spritesheetInfo.actionsToCoordinates[myAction].begin();
+                        break;
+                }
             }
             spriteRect.top = (*actionIterator)->getTop();
             spriteRect.left = (*actionIterator)->getLeft();
@@ -50,18 +66,35 @@ void AnimatedSprite::animate() {
     }
 }
 
-void AnimatedSprite::draw(sf::RenderWindow& window) {
-    if (isValid)
-        window.draw(mySprite);
+
+void AnimatedSprite::move() {
+    if(isValid) {
+        sf::Vector2f movement(0.0f, 0.0f);
+        if(moveUp)
+            movement.y -= mySpeed;
+        if(moveDown)
+            movement.y += mySpeed;
+        if(moveLeft)
+            movement.x -= mySpeed;
+        if(moveRight)
+            movement.x += mySpeed;
+
+        mySprite.move(movement * moveClock.getElapsedTime().asSeconds());
+        moveClock.restart();
+    }
 }
 
-void AnimatedSprite::move(sf::Vector2f loc) {
+
+void AnimatedSprite::draw(sf::RenderWindow* window) {
     if (isValid)
-        mySprite.move(loc);
+        window->draw(mySprite);
 }
 
 void AnimatedSprite::setAction(Actions::ActionEnum action) {
     if (isValid) {
+        if (myAction == action) {
+            return;
+        }
         myAction = action;
         actionIterator = spritesheetInfo.actionsToCoordinates[myAction].begin();
         spriteRect.top = (*actionIterator)->getTop();
@@ -74,6 +107,20 @@ void AnimatedSprite::setAction(Actions::ActionEnum action) {
     }
 }
 
+void AnimatedSprite::setMovement(Actions::DirectionEnum direction, bool move) {
+    if (isValid){
+        if (direction == Actions::DirectionEnum::Up) {
+            moveUp = move;
+        } else if (direction == Actions::DirectionEnum::Down) {
+            moveDown = move;
+        } else if (direction == Actions::DirectionEnum::Right) {
+            moveRight = move;
+        } else if (direction == Actions::DirectionEnum::Left) {
+            moveLeft = move;
+        }
+    }
+}
+
 void AnimatedSprite::setPosition(float x, float y) {
     if (isValid)
         mySprite.setPosition(x, y);
@@ -82,6 +129,22 @@ void AnimatedSprite::setPosition(float x, float y) {
 void AnimatedSprite::setScale(float scale) {
     if (isValid)
         mySprite.setScale(scale, scale);
+}
+
+Actions::ActionEnum AnimatedSprite::getAction() {
+        return myAction;
+}
+
+bool AnimatedSprite::getMovement(Actions::DirectionEnum direction) {
+    if (direction == Actions::DirectionEnum::Up) {
+        return moveUp;
+    } else if (direction == Actions::DirectionEnum::Down) {
+        return moveDown;
+    } else if (direction == Actions::DirectionEnum::Right) {
+        return moveRight;
+    } else {
+        return moveLeft;
+    }
 }
 
 sf::Vector2f AnimatedSprite::getPosition() const {

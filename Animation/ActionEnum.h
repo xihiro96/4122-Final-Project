@@ -28,6 +28,13 @@ namespace Actions {
         CastSpellLeft
     };
 
+    enum class DirectionEnum {
+        Up,
+        Right,
+        Down,
+        Left
+    };
+
 };
 
 #endif //SFMLDEMO_ACTIONENUM_H
